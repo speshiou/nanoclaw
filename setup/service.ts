@@ -87,6 +87,8 @@ function setupLaunchd(
 <dict>
     <key>Label</key>
     <string>com.nanoclaw</string>
+    <key>LimitLoadToSessionType</key>
+    <string>Aqua</string>
     <key>ProgramArguments</key>
     <array>
         <string>${nodePath}</string>
@@ -101,7 +103,7 @@ function setupLaunchd(
     <key>EnvironmentVariables</key>
     <dict>
         <key>PATH</key>
-        <string>/usr/local/bin:/usr/bin:/bin:${homeDir}/.local/bin</string>
+        <string>/usr/local/bin:/usr/bin:/bin:/opt/homebrew/bin:/usr/local/sbin:${homeDir}/.local/bin:${homeDir}/.orbstack/bin</string>
         <key>HOME</key>
         <string>${homeDir}</string>
     </dict>
