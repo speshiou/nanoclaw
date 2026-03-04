@@ -1,0 +1,13 @@
+name: add-menubar
+skill: add-menubar
+version: 1.0.0
+description: Add a native macOS menu bar icon to NanoClaw for visual status and management.
+adds:
+  - src/extensions/menubar/menubar.swift
+  - src/extensions/menubar/menubar-controller.ts
+modifies:
+  - src/index.ts
+manifest_version: 0.1.0
+core_version: ">=1.2.0"
+platforms:
+  - macos
