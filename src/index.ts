@@ -44,6 +44,7 @@ import { findChannel, formatMessages, formatOutbound } from './router.js';
 import { startSchedulerLoop } from './task-scheduler.js';
 import { Channel, NewMessage, RegisteredGroup } from './types.js';
 import { logger } from './logger.js';
+import { MenubarController } from './extensions/menubar/menubar-controller.js';
 
 // Re-export for backwards compatibility during refactor
 export { escapeXml, formatMessages } from './router.js';
@@ -448,6 +449,14 @@ function ensureContainerSystemRunning(): void {
 }
 
 async function main(): Promise<void> {
+  const __dirname = path.dirname(new URL(import.meta.url).pathname);
+  const projectRoot = path.resolve(__dirname, '..');
+
+  if (process.platform === 'darwin') {
+    const menubar = new MenubarController(projectRoot);
+    menubar.start();
+  }
+
   ensureContainerSystemRunning();
   initDatabase();
   logger.info('Database initialized');
